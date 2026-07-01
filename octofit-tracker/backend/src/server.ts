@@ -10,9 +10,13 @@ const app = express();
 app.use(express.json());
 
 const PORT = process.env.PORT || 8000;
+const codespaceName = process.env.CODESPACE_NAME;
+const apiBaseUrl = codespaceName
+  ? `https://${codespaceName}-8000.app.github.dev`
+  : 'http://localhost:8000';
 
 app.get('/api/health', (_req, res) => {
-  res.json({ status: 'ok' });
+  res.json({ status: 'ok', apiBaseUrl });
 });
 
 app.get('/api/users', async (_req, res) => {
