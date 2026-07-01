@@ -7,6 +7,11 @@ function getApiBaseUrl() {
     : 'http://localhost:8000';
 }
 
+function getApiUrl() {
+  const baseUrl = getApiBaseUrl();
+  return `${baseUrl}/api/workouts`;
+}
+
 function normalizeRecords(payload) {
   if (Array.isArray(payload)) {
     return payload;
@@ -37,7 +42,7 @@ export default function Workouts() {
 
     async function loadWorkouts() {
       try {
-        const response = await fetch(`${getApiBaseUrl()}/api/workouts/`);
+        const response = await fetch(getApiUrl());
         if (!response.ok) {
           throw new Error(`Request failed with ${response.status}`);
         }
