@@ -9,7 +9,7 @@ function getApiBaseUrl() {
 
 function getApiUrl() {
   const baseUrl = getApiBaseUrl();
-  return `${baseUrl}/api/teams`;
+  return `${baseUrl}/api/teams/`;
 }
 
 function normalizeRecords(payload) {
